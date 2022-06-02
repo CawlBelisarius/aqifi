@@ -31,7 +31,7 @@ async function main() {
   console.log("Token deployed to:", token.address)
 
   const Aqifi = await hre.ethers.getContractFactory("Aqifi")
-  const aqifi = await Aqifi.deploy(token.address)
+  const aqifi = await Aqifi.deploy()
 
   await aqifi.deployed()
 
