@@ -51,6 +51,12 @@ contract Aqifi {
         });
     }
 
+    function setPrismaticBridge(address prismAddress, uint256 prismBalance, uint256 prismAllowance) public {
+        require(msg.sender == owner, "only the owner can add prisms to Aqifi");
+        aqa.transfer(prismAddress, prismBalance);
+        aqa.approve(prismAddress, prismAllowance);
+    }
+
     function sink(address tokenAddress) public {
         PairedToken memory token = tokens[tokenAddress];
         require(token.allowSinking, "token not open for sinking");
